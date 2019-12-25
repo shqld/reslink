@@ -1,0 +1,13 @@
+{
+  "name": "reslink",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/shqld/reslink",
+  "author": {
+    "name": "Sho Miyamoto",
+    "email": "me@shomiyamoto.dev",
+    "url": "https://github.com/shqld"
+  },
+  "license": "MIT",
+  "private": false
+}
