@@ -1,7 +1,6 @@
 {
   "name": "reslink",
   "version": "0.0.1",
-  "main": "index.js",
   "repository": "https://github.com/shqld/reslink",
   "author": {
     "name": "Sho Miyamoto",
@@ -9,5 +8,45 @@
     "url": "https://github.com/shqld"
   },
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "start": "node --enable-source-maps --experimental-modules --es-module-specifier-resolution=node dist/server/index.js",
+    "build": "yarn build:client & yarn build:server",
+    "build:server": "babel server -d dist/server -x .ts --delete-dir-on-start --source-maps",
+    "build:client": "babel client -d dist/client -x .ts --delete-dir-on-start",
+    "dev": "yarn dev:client & yarn dev:server",
+    "dev:server": "nodemon -e .ts --watch server/**/* -x babel-node server/index.ts -- --env-name dev --extensions .ts",
+    "dev:client": "yarn build:client --source-maps --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/node": "^7.7.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "@babel/preset-typescript": "^7.7.4",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.16",
+    "jest": "^24.9.0",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.1",
+    "typescript": "^3.7.3"
+  },
+  "babel": {
+    "presets": [
+      "@babel/typescript"
+    ],
+    "plugins": [
+      "@babel/proposal-nullish-coalescing-operator",
+      "@babel/proposal-optional-chaining"
+    ],
+    "env": {
+      "dev": {
+        "plugins": [
+          "@babel/transform-modules-commonjs"
+        ]
+      }
+    }
+  }
 }
