@@ -18,6 +18,9 @@
     "dev:server": "nodemon -e .ts --watch server/**/* -x babel-node server/index.ts -- --env-name dev --extensions .ts",
     "dev:client": "yarn build:client --source-maps --watch"
   },
+  "dependencies": {
+    "jsonrpc-lite": "^2.1.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
